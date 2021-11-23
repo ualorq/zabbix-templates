@@ -10,7 +10,7 @@ UserParameter=asterisk.calls.active,sudo /usr/sbin/asterisk -r -x "core show cal
 UserParameter=asterisk.calls.processed,sudo /usr/sbin/asterisk -r -x "core show calls" | grep processed | cut -d" " -f1
 UserParameter=asterisk.channels.active,sudo /usr/sbin/asterisk -r -x "core show channels" | grep "active channels" | cut -d" " -f1
 UserParameter=asterisk.sip.total,sudo /usr/sbin/asterisk -r -x "sip show peers" | grep "sip peers" | cut -d" " -f1
-UserParameter=asterisk.sip.online,sudo /usr/sbin/asterisk -r -x "sip show peers" | grep "sip peers" | sed 's/.* \([0-9]*\) online.*/\1/'
+UserParameter=asterisk.sip.online,sudo /usr/sbin/asterisk -r -x "sip show peers" | grep "Monitored" | awk '{print $5;}'
 
 Sudo entry: add with 'visudo' command
 ----------
